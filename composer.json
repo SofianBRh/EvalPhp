@@ -1,0 +1,16 @@
+{
+    "name": "brhaiberh/footlocker",
+    "description": "Footlocker",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "SofianBRh",
+            "email": "sofianbrhaiber9h@gmail.com"
+        }
+    ],
+    "require": {}
+}
