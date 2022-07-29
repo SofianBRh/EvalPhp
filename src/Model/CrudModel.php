@@ -17,7 +17,11 @@
 
                     protected $Quantity;
 
+                    protected $Genre;
+
                     protected $pdo;
+
+                    protected $Description;
                     
                     const TABLE_NAME = 'Kickz';
 
@@ -26,16 +30,46 @@
                         $database = new Database();
                         $this->pdo = $database->getPDO();
                     }
+                    public function filter(){
+                        $keywords=$_GET['keywords'];
+                        $valider=$_GET['valider'];
+                        if(isset($valider) && !empty($keywords)){
+                            $sql = "SELECT * FROM Kickz WHERE Name LIKE '%$keywords%'";
+                            $query = $this->pdo->prepare($sql);
+                            $query->execute();
+                            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                            return $result;
+                        }
+
+                        
+                    }
 
                     public function findAll()
                     {
+                        $contratRequete="" ; 
+                        $lieuRequete=""; 
+                     
+                    
+                            if (!empty($contrat)){
+                    
+                                $contratRequete = " WHERE Genre LIKE '" .$contrat."'";
+                            }
+                    
+                          
+                    
+                                $nbElements = "SELECT 
+                                        COUNT(id) 
+                                        FROM " . self::TABLE_NAME ."
+                                        $contratRequete
+                                        $lieuRequete";
                         $sql = 'SELECT
                                 `id`
                                 ,`Name`
                                 ,`Price`
                                 ,`Image`
                                 ,`Quantity`
-                                ,`Imageription`
+                                ,`Image`
+                                ,`Description`
                                 ,`Genre`                        
                                 FROM ' . self::TABLE_NAME . '
                                 ORDER BY `id` ASC;
@@ -64,47 +98,59 @@
 
 
                         
-                        public function ccreate(){
+                        public function ccreate($data){
                 
-                            if(isset($_POST['Name'])){
-                        
-                        
-                        
-                        
-                        
-                        
-                                $Name = $_POST['Name'];
-                                $Price =$_POST['Price'];
-                                $Image =$_POST['Image'];
-                                $Quantity = $_POST['Quantity'] ;
-                                $Description =$_POST['Description'];
-                                $Genre = $_POST['Genre'];
+                            if(isset($data['Name'])){
+
+                                $Name = $data['Name'];
+                                $Price =$data['Price'];
+                                $Image =$data['Image'];
+                                $Quantity = $data['Quantity'] ;
+                                $Description =$data['Description'];
+                                $Genre = $data['Genre'];
                             
-                                $data =[$Name,$Price,$Quantity,$Description,$Genre];
+                             
                                 
                                 
                                 if(empty($Name) || empty($Price) || empty($Genre) || empty($Quantity) || empty($Description)){
                                 
                                 echo'champs manquant';}
-                                $sql =  "INSERT INTO Kickz(Name,Price,Image,Quantity,Description,Genre) VALUES( '" . $_POST['Name'] . "', '" . $_POST['Price'] . "', '". $_POST['Image']. "','". $_POST['Quantity'] . "', '" . $_POST['Description'] . "', '" . $_POST['Genre'] . "')";
+                                $sql =  "INSERT INTO Kickz(Name,Price,Image,Quantity,Description,Genre) VALUES( '" . $data['Name'] . "', '" . $data['Price'] . "', '". $data['Image']['name']. "','". $data['Quantity'] . "', '" . $data['Description'] . "', '" . $data['Genre'] . "')";
                                 $pdoStatement = $this->pdo->query($sql);
                         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+
                         return $result;
                                 
                                     }
-                                //     else{
-                                    
-                                // addproduct($sql,$Name, $Image, $Quantity,$Description ,$Genre);
-                                
-                                
-                                    
-                                
-                                
-                                
-                                // }
-                                
-                    } 
+                              
+                                }  
                     
+                                public function img(){
+                                    if(isset($_POST['submit'])){
+                                        $img=$_FILES['Image'];
+                                        move_uploaded_file($_FILES['Image'],'Image'/'$img') ;                                   }
+                                }
+                     public function delete($id){
+                        
+                        $sql= ("DELETE FROM Kickz WHERE id= $id");
+                        if(isset($_GET['id']))
+                        {  $id=$_GET['id'];
+                            $pdoStatement = $this->pdo->query($sql);
+                            $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+                            return $result;
+                        }
+                        // header('location:?page=Ajout');                  
+                    }
+                    public function table($id){
+                        $mysqlClient =new PDO('mysql:host=localhost;dbname=Footlo;charset=utf8', 'soso', 'Pokemon');
+$requete =$mysqlClient ->prepare ("SELECT * FROM Kickz");
+          $requete->execute();
+                    }
+                     public function tableau(){
+                        while($resulta = $requete->fetch(PDO:: FETCH_ASSOC)){
+                            var_dump($resulta);
+                     }
+                     }
                     public function getId()
                     {
                         return $this->id;
@@ -201,5 +247,46 @@
 
                         return $this;
                     }
+
+                    /**
+                     * Get the value of Description
+                     */ 
+                    public function getDescription()
+                    {
+                                        return $this->Description;
                     }
 
+                    /**
+                     * Set the value of Description
+                     *
+                     * @return  self
+                     */ 
+                    public function setDescription($Description)
+                    {
+                                        $this->Description = $Description;
+
+                                        return $this;
+                    }
+
+                    /**
+                     * Get the value of Genre
+                     */ 
+                    public function getGenre()
+                    {
+                                        return $this->Genre;
+                    }
+
+                    /**
+                     * Set the value of Genre
+                     *
+                     * @return  self
+                     */ 
+                    public function setGenre($Genre)
+                    {
+                                        $this->Genre = $Genre;
+
+                                        return $this;
+                    }
+                    }
+
+                

@@ -11,7 +11,7 @@ class DeleteController extends AbstractController
 
 
     
-    public function index()
+    public function delete()
     {
         $DeleteModel = new DeleteModel();
 
@@ -23,7 +23,7 @@ class DeleteController extends AbstractController
         // vérifier que l'utilisateur a les droits
         // etc...
         $this->render('Delete.php', [
-            'Deletes' => $Deletes
+            'Delete' => $Deletes
         ]);
     }
 

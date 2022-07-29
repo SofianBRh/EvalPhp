@@ -28,7 +28,7 @@ class ModifModel
         $this->pdo = $database->getPDO();
     }
 Function modif(){
-
+$id=$_GET['id'];
     if (isset($_POST['Name'])){
         $id=$_GET['id'];
         $Name = $_POST["Name"];

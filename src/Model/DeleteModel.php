@@ -29,8 +29,8 @@ class DeleteModel
         $this->pdo = $database->getPDO();
     }
  
-function delete(){
-
+ public function delete(){
+   $sql= ("DELETE FROM `kickz` WHERE `id`= $id");
 if(isset($_GET['id']))
 {  $id=$_GET['id'];
    
@@ -39,7 +39,7 @@ if(isset($_GET['id']))
     $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
     return $result;
 
-$pdoStatement -> query ("DELETE FROM `inventory` WHERE `id`= $id");
+$pdoStatement -> query ($sql);
 }
 // header('location:?page=Ajout');
 

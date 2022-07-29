@@ -36,7 +36,7 @@ class Application
     ]
     ,
      'Delete' => [
-      'controller' => 'DeleteController',
+      'controller' => 'CrudController',
        'method' => 'delete'
   ]
 
