@@ -39,19 +39,94 @@
   </div>
 </nav>
 
+<div class="m-10 pb-10 ">
+<form class="w-full max-w-lg bg-gray-300 p-10 contents"enctype="multipart/form-data" action="" method="post">
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+     Name
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" name="Name" placeholder="Name">
+   
+    </div>
+    <div class="w-full md:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+      Price
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text"  name="Price"placeholder="Price">
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+       Image
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password"  type="file"
+       name="Image"
+       accept="image/png, image/jpeg">
+  
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3 mb-2">
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+       Quantity
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="number" id="tentacles" name="Quantity" placeholder="Quantity" 
+       min="0" max="100">
+    </div>
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+      Description
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" name="Description" placeholder="<?getDescription()?>"></br>
+    </div>
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+     Genre
+      </label>
+   
+      <div class="relative">
+        <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state"  type="text" name="Genre" placeholder=<?getGenre()?>>
+          <option>Homme</option>
+          <option>Femme</option>
+        
+        </select>
+      <input class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit"  value='submit' placeholder="submit">
+    </div>
+  </div>
+</form>
+</div>
+
+<div class="border-solid" style="max-width: 1000px; padding : 0.5rem; margin : 5%; display:inline-block; text-align:center; display: block;
+    margin-left: auto;
+    margin-right: auto  "> 
+  <div class="card-header"><h4 class="card-title"><?=$details-> getName()?></h4></div>
+  <div class="card-body">
+    
+    <p class="card-text"> Quantité Disponnible : <?=$details-> getQuantity()?></p>
+    <p class="card-text"> Prix : <?=$details-> getPrice()?> $</p>
+    <img src ="./Image/<?=$details-> getImage()?>" width="50%" height="50%">
+    <p class="card-text"> <?=$details-> getDescription()?></p>
+
+
+    </div>
+
+</div>
+
 <?php
 
-echo "<form method='post'>
-<input placeholder='Reference'name='Name'></input> 
-<input placeholder='Prix 'name='Price'></input>
-<input placeholder='Image'name='Image'></input>
-<input placeholder='Quantité'name='Quantity'></input>
-<input placeholder='Desc'name='Description'></input>
-<input placeholder='Genre'name='Genre'></input>
-<button type='submit'>Ajouter</button>
-</form>";
+// echo "<form method='post'>
+// <input placeholder='Reference'name='Name'></input> 
+// <input placeholder='Prix 'name='Price'></input>
+// <input placeholder='Image'name='Image'></input>
+// <input placeholder='Quantité'name='Quantity'></input>
+// <input placeholder='Desc'name='Description'></input>
+// <input placeholder='Genre'name='Genre'></input>
+// <button type='submit'>Ajouter</button>
+// </form>";
 
-// if (isset($_POST['Name'])){
+// // if (isset($_POST['Name'])){
 // $id=$_GET['id'];
 
 //         $Name = $_POST["Name"];

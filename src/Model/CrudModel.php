@@ -22,6 +22,7 @@
                     protected $pdo;
 
                     protected $Description;
+
                     
                     const TABLE_NAME = 'Kickz';
 
@@ -33,7 +34,7 @@
                     public function filter(){
                         $keywords=$_GET['keywords'];
                         $valider=$_GET['valider'];
-                        if(isset($valider) && !empty($keywords)){
+                        if(isset($valider) && !empty(trim($keywords))){
                             $sql = "SELECT * FROM Kickz WHERE Name LIKE '%$keywords%'";
                             $query = $this->pdo->prepare($sql);
                             $query->execute();
@@ -43,7 +44,8 @@
 
                         
                     }
-
+                    // function qui recupere mes donné dans ma bd 
+                    
                     public function findAll()
                     {
                         $contratRequete="" ; 
@@ -79,23 +81,8 @@
                         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
                         return $result;
                     }
-
-                    public function create($Name,$Price,$Quantity )
-                    {
-                        $sql = 'INSERT INTO ' . self::TABLE_NAME . '
-                                (`Name`, `Price`, `Quantity`)
-                                VALUES
-                                (:name, :Price, : (
-                                    SELECT (IFNULL(MAX(sort), 0) + 1) FROM ' . self::TABLE_NAME . ' AS `card2` WHERE `list_id` = :list_id
-                                ))
-                        ';
-
-                        $pdoStatement = $this->pdo->prepare($sql);
-                        $pdoStatement->bindValue(':name', $name, PDO::PARAM_STR);
-                        $pdoStatement->bindValue(':list_id', $listId, PDO::PARAM_INT);
-
-                        $result = $pdoStatement->execute();}
-
+// funcgtion qui me permet de créer de nouveaux produit dans ma bdd 
+                   
 
                         
                         public function ccreate($data){
@@ -116,6 +103,33 @@
                                 
                                 echo'champs manquant';}
                                 $sql =  "INSERT INTO Kickz(Name,Price,Image,Quantity,Description,Genre) VALUES( '" . $data['Name'] . "', '" . $data['Price'] . "', '". $data['Image']['name']. "','". $data['Quantity'] . "', '" . $data['Description'] . "', '" . $data['Genre'] . "')";
+                                $pdoStatement = $this->pdo->query($sql);
+                        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+
+                        return $result;
+                                
+                                    }
+                              
+                                }  
+
+                        public function modif($data){
+                
+                            if(isset($data['Name'])){
+
+                                $Name = $data['Name'];
+                                $Price =$data['Price'];
+                                $Image =$data['Image'];
+                                $Quantity = $data['Quantity'] ;
+                                $Description =$data['Description'];
+                                $Genre = $data['Genre'];
+                            
+                             
+                                
+                                
+                                if(empty($Name) || empty($Price) || empty($Genre) || empty($Quantity) || empty($Description)){
+                                
+                                echo'champs manquant';}
+                                $sql =  "UPDATE Kickz  SET (Name,Price,Image,Quantity,Description,Genre) VALUES( '" . $data['Name'] . "', '" . $data['Price'] . "', '". $data['Image']['name']. "','". $data['Quantity'] . "', '" . $data['Description'] . "', '" . $data['Genre'] . "')";
                                 $pdoStatement = $this->pdo->query($sql);
                         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
 
@@ -148,7 +162,7 @@ $requete =$mysqlClient ->prepare ("SELECT * FROM Kickz");
                     }
                      public function tableau(){
                         while($resulta = $requete->fetch(PDO:: FETCH_ASSOC)){
-                            var_dump($resulta);
+                           
                      }
                      }
                     public function getId()

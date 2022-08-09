@@ -21,7 +21,7 @@
 
         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Footlocker</span>
       </a>
-      <form name="fo" method="get" action="">
+      <form name="formsearch" method="get" action="">
         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
         <div class="relative">
           <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -29,20 +29,20 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
           </div>
-          <input type="text" name="keywords" id="default-search" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
-          <button type="submit" name="valider" value="Rechercher" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+          <input type="text" name="search" id="default-search" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" />
+ 
         </div>
       </form>
-      <form method="get">
+      <!-- <form method="get">
         <h1>Genre</h1>
         <input type="hidden" name="p" value="1">
         <select name="filtre_contrat">
           <option value="Homme">Homme</option>
           <option value="Femme">Femme</option>
 
-        </select>
-        <input type="submit" value="Filtrer">
-      </form>
+</select> -->
+        <!-- <input type="submit" value="Filtrer">
+      </form> -->
       <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -65,32 +65,35 @@
   </nav>
 
 
-  <div class="  grid grid-cols-2 gap-4">
+  <div class=" m-4 item-center grid grid-cols-2 content-center">
     <?php foreach ($homes as $home) : ?>
 
-      <div class=" mb-10 content-center pb-8 flex  items-center content-start  max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <div class=" mb-10 content-center pb-8 flex  items-center    bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
 
-        <img class="rounded-t-lg" src="./Image/<?= $home->getImage() ?>" width="50%" height="50%" />
+        <img class="rounded-t-lg" src="./Image/<?= $home->getImage() ?>" width="30%" height="30%" />
 
         <div class="p-5">
 
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> <?= $home->getName() ?></h5>
+          <h5 class=" text-right font-bold tracking-tight text-gray-900 dark:text-white"> <?= $home->getName() ?></h5>
 
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Prix :<?= $home->getPrice() ?> </p>
+          <p class="text-right font-normal text-gray-700 dark:text-gray-400">Prix :<?= $home->getPrice() ?> </p>
           <form>
-            <a href="?page=Detail&id=<?= $home->getId() ?>">
-              <input type="button" style="margin-top:3%" value="More info">
+            <a class="text-right" href="?page=Detail&id=<?= $home->getId() ?>">
+              <input  type="button" style="margin-top:3%" value="More info">
             </a>
           </form>
-          <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-          </svg>
+          
           </a>
         </div>
       </div>
 
 <?php endforeach ?>
 </div>
+
+
+
+
+
 
 <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 </body>

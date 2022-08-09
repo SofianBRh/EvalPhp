@@ -27,19 +27,26 @@ class HomeModel
         $this->pdo = $database->getPDO();
     }
 
-    public function findAll()
+    public function findAll($search)
     {
-        $sql = 'SELECT
-                `id`
-                ,`Name`
-                ,`Price`
-                ,`Image`
-                ,`Quantity`
-                FROM ' . self::TABLE_NAME . '
-                ORDER BY `id` ASC;
-        ';
+        $sql = "SELECT * FROM `Kickz`";
 
-        $pdoStatement = $this->pdo->query($sql);
+        if (isset($search) && !empty($search)) {
+            $sql .=" WHERE `name` LIKE   :search  ";
+        }
+
+
+        $pdoStatement = $this->pdo->prepare($sql);
+
+    
+        if (isset($search) && !empty($search)) {
+            $pdoStatement->bindValue(':search', $search);
+        }
+    
+
+    
+        $pdoStatement->execute();
+
         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
         return $result;
     }
@@ -60,8 +67,8 @@ class HomeModel
         $pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
         $result = $pdoStatement->execute();
         $result = $pdoStatement->fetchObject(self::class);
-        return $result;
     }
+
 
     public function create($name)
     {
