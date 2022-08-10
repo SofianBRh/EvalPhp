@@ -38,21 +38,26 @@
     </div>
   </div>
 </nav>
+<div class=" m-8 grid grid-rows-2 flow-root  max-w-sm bg-gray-200 rounded-lg object-top border border-gray-200 content-center shadow-md dark:bg-gray-800 dark:border-gray-700">
 
+<img class="  rounded-t-lg  "   style="" src="./Image/<?= $details->getImage()  ?>" />
 
-<div class="border-solid" style="max-width: 1000px; padding : 0.5rem; margin : 5%; display:inline-block; text-align:center; display: block;
-    margin-left: auto;
-    margin-right: auto  "> 
-  <div class="card-header"><h4 class="card-title"><?=$details-> getName()?></h4></div>
-  <div class="card-body">
+<div class="pt-8 object-center p-5" style="text-align:center;">
+
+  <h5 class="  object-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> <?= $details->getName() ?></h5>
+
+  <p class="mb-3  object-center font-normal text-gray-700 dark:text-gray-400">Prix :<?= $details->getPrice() ?> </p>
+ 
+  <p class="mb-3  object-center font-normal text-gray-700 dark:text-gray-400">Description :<?= $details->getDescription() ?> </p>
+  <p class="mb-3  object-center font-normal text-gray-700 dark:text-gray-400">Prix :<?= $details->getGenre() ?> </p>
     
-    <p class="card-text"> Quantité Disponnible : <?=$details-> getQuantity()?></p>
-    <p class="card-text"> Prix : <?=$details-> getPrice()?> $</p>
-    <img src ="./Image/<?=$details-> getImage()?>" width="50%" height="50%">
-    <p class="card-text"> <?=$details-> getDescription()?></p>
+ 
+  
+  </a>
+</div>
+</div>
 
 
-    </div>
 
 </div>
 </body>

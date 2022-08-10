@@ -24,7 +24,7 @@ class DetailModel{
     
         protected $Quantity;
         protected $Description;
-    
+    protected $genre;
         protected $pdo;
     
         const TABLE_NAME = 'Kickz';
@@ -44,6 +44,7 @@ class DetailModel{
                     ,`Image`
                     ,`Quantity`
                     ,`Description`
+                    ,`genre`
                     FROM ' . self::TABLE_NAME . '
                     ORDER BY `id` ASC;
             ';
@@ -211,6 +212,26 @@ class DetailModel{
 
                 return $this;
         }
+
+    /**
+     * Get the value of genre
+     */ 
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+
+    /**
+     * Set the value of genre
+     *
+     * @return  self
+     */ 
+    public function setGenre($genre)
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
     }
         
     

@@ -63,25 +63,25 @@
       </div>
     </div>
   </nav>
+<div class="mx-10 mx-10">
 
-
-  <div class=" m-4 item-center grid grid-cols-2 content-center">
+  <div class=" m-4  flex grid grid-cols-2 flow-root">
     <?php foreach ($homes as $home) : ?>
 
-      <div class=" mb-10 content-center pb-8 flex  items-center    bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <div class=" m-8 grid grid-rows-2 flow-root  max-w-sm bg-gray-200 rounded-lg object-top border border-gray-200 content-center shadow-md dark:bg-gray-800 dark:border-gray-700">
 
-        <img class="rounded-t-lg" src="./Image/<?= $home->getImage() ?>" width="30%" height="30%" />
+        <img class="  rounded-t-lg  "   style="" src="./Image/<?= $home->getImage()  ?>" />
 
-        <div class="p-5">
+        <div class="pt-8 object-center p-5" style="text-align:center;">
 
-          <h5 class=" text-right font-bold tracking-tight text-gray-900 dark:text-white"> <?= $home->getName() ?></h5>
+          <h5 class="  object-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> <?= $home->getName() ?></h5>
 
-          <p class="text-right font-normal text-gray-700 dark:text-gray-400">Prix :<?= $home->getPrice() ?> </p>
+          <p class="mb-3  object-center font-normal text-gray-700 dark:text-gray-400">Prix :<?= $home->getPrice() ?> </p>
           <form>
-            <a class="text-right" href="?page=Detail&id=<?= $home->getId() ?>">
+            <a class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="?page=Detail&id=<?= $home->getId() ?>">
               <input  type="button" style="margin-top:3%" value="More info">
             </a>
-          </form>
+         
           
           </a>
         </div>
@@ -90,7 +90,7 @@
 <?php endforeach ?>
 </div>
 
-
+</div>
 
 
 
