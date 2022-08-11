@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
-  
+  <link rel="stylesheet" href="/var/www/html/Footlocker/src/style/style.css" />
 </head>
 
     
     <title>Document</title>
 </head>
-<body class="mx-10">
+<body class="sm:mx-10">
 <nav class="bg-gray-300 mb-9 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
   <div class="container flex flex-wrap justify-between items-center mx-auto">
     <a href="?page=home" class="flex items-center">
@@ -38,27 +38,26 @@
     </div>
   </div>
 </nav>
-<div class=" m-8 grid grid-rows-2 flow-root  max-w-sm bg-gray-200 rounded-lg object-top border border-gray-200 content-center shadow-md dark:bg-gray-800 dark:border-gray-700">
 
-<img class="  rounded-t-lg  "   style="" src="./Image/<?= $details->getImage()  ?>" />
-
-<div class="pt-8 object-center p-5" style="text-align:center;">
-
-  <h5 class="  object-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> <?= $details->getName() ?></h5>
-
-  <p class="mb-3  object-center font-normal text-gray-700 dark:text-gray-400">Prix :<?= $details->getPrice() ?> </p>
- 
-  <p class="mb-3  object-center font-normal text-gray-700 dark:text-gray-400">Description :<?= $details->getDescription() ?> </p>
-  <p class="mb-3  object-center font-normal text-gray-700 dark:text-gray-400">Prix :<?= $details->getGenre() ?> </p>
-    
- 
-  
-  </a>
+<div  class=" 	rounded flex  items-center h-screen pb-10 p-8  space-x-4 pt-10  flex-col object-center ">
+    <a href="?page=Detail&id=<?= $details->getId() ?>">
+        <img class="text-center items-stretch  rounded-t-lg" src="./Image/<?= $details->getImage()  ?>" alt="product image">
+    </a>
+    <div class="px-5   pb-5">
+        <a href="?page=Detail&id=<?= $details->getId() ?>">
+            <h5 class="text-xl  text-center font-semibold tracking-tight text-gray-900 dark:text-white"><?= $details->getName() ?></h5>
+        </a>
+        <div class="flex items-center grid grid-rows-3 text-center">
+            <p class="mt-10"> <?=$details->getDescription() ?></p>
+        <div class="text-center ">
+            <p class="text-3xl mt-10 text-center font-bold text-gray-900 dark:text-white">$<?= $details->getPrice()?></p>
+            
+        </div>
+    </div>
 </div>
-</div>
 
 
 
-</div>
 </body>
+<script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 </html>

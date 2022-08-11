@@ -13,7 +13,7 @@
 <title>Document</title>
 </head>
 
-<body class="mx-10 mx-10">
+<body class="sm:mx-10 sm:mx-10">
 
   <nav class="bg-gray-300 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
@@ -63,38 +63,35 @@
       </div>
     </div>
   </nav>
-<div class="mx-10 mx-10">
 
-  <div class=" m-4  flex grid grid-cols-2 flow-root">
-    <?php foreach ($homes as $home) : ?>
 
-      <div class=" m-8 grid grid-rows-2 flow-root  max-w-sm bg-gray-200 rounded-lg object-top border border-gray-200 content-center shadow-md dark:bg-gray-800 dark:border-gray-700">
 
-        <img class="  rounded-t-lg  "   style="" src="./Image/<?= $home->getImage()  ?>" />
-
-        <div class="pt-8 object-center p-5" style="text-align:center;">
-
-          <h5 class="  object-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> <?= $home->getName() ?></h5>
-
-          <p class="mb-3  object-center font-normal text-gray-700 dark:text-gray-400">Prix :<?= $home->getPrice() ?> </p>
-          <form>
-            <a class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="?page=Detail&id=<?= $home->getId() ?>">
-              <input  type="button" style="margin-top:3%" value="More info">
-            </a>
-         
-          
-          </a>
+<div class=" flex   grid sm:grid-cols-3">
+<?php foreach ($homes as $home) : ?>
+<div class="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 mt-10">
+    <a href="?page=Detail&id=<?= $home->getId() ?>">
+        <img class="p-8 rounded-t-lg" src="./Image/<?= $home->getImage()  ?>" alt="product image">
+    </a>
+    <div class="px-5 pb-5">
+        <a href="?page=Detail&id=<?= $home->getId() ?>">
+            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"><?= $home->getName() ?></h5>
+        </a>
+        <div class="flex items-center mt-2.5 mb-5">
+            <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+            <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Second star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+            <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Third star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+            <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fourth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+            <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+            <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
         </div>
-      </div>
-
+        <div class="flex justify-between items-center">
+            <span class="text-3xl font-bold text-gray-900 dark:text-white">$<?= $home->getPrice()?></span>
+            <a href="?page=Detail&id=<?= $home->getId() ?>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+        </div>
+    </div>
+</div>
 <?php endforeach ?>
 </div>
-
-</div>
-
-
-
-
 <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 </body>
 

@@ -98,21 +98,23 @@
 </form>
 </div>
 
-<div class="border-solid" style="max-width: 1000px; padding : 0.5rem; margin : 5%; display:inline-block; text-align:center; display: block;
-    margin-left: auto;
-    margin-right: auto  "> 
-  <div class="card-header"><h4 class="card-title"><?=$details-> getName()?></h4></div>
-  <div class="card-body">
-    
-    <p class="card-text"> Quantité Disponnible : <?=$details-> getQuantity()?></p>
-    <p class="card-text"> Prix : <?=$details-> getPrice()?> $</p>
-    <img src ="./Image/<?=$details-> getImage()?>" width="50%" height="50%">
-    <p class="card-text"> <?=$details-> getDescription()?></p>
-
-
+<div  class=" 	rounded flex  items-center h-screen pb-10 p-8  space-x-4 pt-10  flex-col object-center ">
+    <a href="?page=Detail&id=<?= $details->getId() ?>">
+        <img class="text-center items-stretch  rounded-t-lg" src="./Image/<?= $details->getImage()  ?>" alt="product image">
+    </a>
+    <div class="px-5   pb-5">
+        <a href="?page=Detail&id=<?= $details->getId() ?>">
+            <h5 class="text-xl  text-center font-semibold tracking-tight text-gray-900 dark:text-white"><?= $details->getName() ?></h5>
+        </a>
+        <div class="flex items-center grid grid-rows-3 text-center">
+            <p class="mt-10"> <?=$details->getDescription() ?></p>
+        <div class="text-center ">
+            <p class="text-3xl mt-10 text-center font-bold text-gray-900 dark:text-white">$<?= $details->getPrice()?></p>
+            
+        </div>
     </div>
-
 </div>
+
 
 <?php
 
